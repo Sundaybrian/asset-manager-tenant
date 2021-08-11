@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Main from "./Main";
-import AppBarAndDrawer from "../../Container/AppBar";
-import getDashboardRoutes from "../../../Utils/helpers";
+import AppBarAndDrawer from "../../components/Container/AppBar";
+import getDashboardRoutes from "../../utils/helpers";
 import { connect } from "react-redux";
-import { logoutUser } from "../../../Redux/Actions/authActions";
+import { logoutUser } from "../../redux/Actions/authActions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,7 +14,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Dashboard(props) {
+interface IProps {
+    user: any,
+    match: any,
+    auth: any,
+    logoutUser: ()=> void
+}
+
+const Dashboard:React.FC<IProps> = (props) =>{
     const classes = useStyles();
     /* eslint-disable no-unused-vars */
     const {
@@ -48,11 +55,6 @@ function Dashboard(props) {
     );
 }
 
-Dashboard.propTypes = {
-    user: PropTypes.object.isRequired,
-    logoutUser: PropTypes.func.isRequired,
-    authenticated: PropTypes.bool.isRequired,
-};
 
 const mapStateToProps = (state) => ({
     user: state.auth.user,
