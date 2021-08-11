@@ -72,6 +72,17 @@
       "last 1 safari version"
     ]
   },
+  "importSort": {
+    ".js, .jsx, .es6, .es": {
+      "style": "eslint",
+      "options": {}
+    },
+    ".ts, .tsx": {
+      "parser": "typescript",
+      "style": "eslint",
+      "options": {}
+    }
+  },
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/material-ui": "^0.21.9",

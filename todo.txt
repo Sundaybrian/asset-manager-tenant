@@ -1,0 +1,8 @@
+// pages
+[] signup
+[] login
+[] dashboard homepage
+[] tenant create invoice
+[] tenant create new contract
+[] tenant end existing contract
+[] tenant view all contracts
