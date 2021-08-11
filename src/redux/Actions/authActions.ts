@@ -4,10 +4,10 @@ import {
     LOADING_UI,
     CLEAR_ERRORS,
     SET_SUCCESS,
-    SET_UNAUTHENTICATED,
+    SET_UNAUTHENTICATED
 } from "../types";
 import axios from "axios";
-import { db } from "../../Utils/fb.config";
+import { db } from "../../utils/fb.config";
 
 // login merchant
 export const loginUser =
@@ -211,7 +211,7 @@ const setAuthorizationHeader = (token) => {
 };
 
 export const logoutUser = () => (dispatch) => {
-    localStorage.clear("token");
+    localStorage.clear();
     delete axios.defaults.headers.common["Authorization"];
     dispatch({ type: SET_UNAUTHENTICATED });
     window.location.href = "/";
