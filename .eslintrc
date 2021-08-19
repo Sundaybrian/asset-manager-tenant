@@ -1,0 +1,43 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:sonarjs/recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    // "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "react/jsx-no-bind": ["error", {
+      "allowArrowFunctions": true,
+      "allowBind": false,
+      "ignoreRefs": true
+    }],
+    "react/no-did-update-set-state": "error",
+    "react/no-unknown-property": "error",
+    "react/no-unused-prop-types": "error",
+    "react/react-in-jsx-scope": "error",
+    "react/prop-types": ["off"],
+    // "sonarjs/cognitive-complexity": ["error", 5],
+    "max-lines-per-function": ["warn", 200],
+    "indent": ["warn", "tab"],
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "@typescript-eslint/explicit-module-boundary-types": "off" // its working
+  }
+}
