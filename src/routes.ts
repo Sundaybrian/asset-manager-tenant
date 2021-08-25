@@ -1,5 +1,13 @@
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
+import Reports from './pages/Dashboard/pages/Reports/index';
+//icons
+import DataUsageIcon from "@material-ui/icons/DataUsage";
+import DriveEtaIcon from "@material-ui/icons/DriveEta";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
+import PersonIcon from "@material-ui/icons/Person";
+import SearchIcon from "@material-ui/icons/Search";
 
 export const defaultRoutes = [
   {
@@ -20,13 +28,13 @@ export const defaultRoutes = [
 ];
 
 const dashboardRoutes = [
-  // {
-  //     path: "reports",
-  //     component: Reports,
-  //     text: "reports",
-  //     icon: DataUsageIcon,
-  //     layout: "/company",
-  // },
+  {
+      path: "reports",
+      component: Reports,
+      text: "reports",
+      icon: DataUsageIcon,
+      layout: "/company",
+  },
   // {
   //     path: "merchants",
   //     component: Merchants,
