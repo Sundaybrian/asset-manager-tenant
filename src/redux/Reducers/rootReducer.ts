@@ -1,10 +1,15 @@
-import { combineReducers } from "redux";
-import auth from "./authReducer";
-import ui from "./uiReducer";
-import { firebaseReducer } from "react-redux-firebase";
+import { combineReducers } from 'redux';
+import auth from './authReducer';
+import ui from './uiReducer';
+import { firebaseReducer } from 'react-redux-firebase';
 
-export default combineReducers({
-    auth,
-    ui,
-    firebase: firebaseReducer
+const rootReducer = combineReducers({
+  auth,
+  ui,
+  firebase: firebaseReducer,
 });
+
+
+export default rootReducer
+
+export type RootState = ReturnType<typeof rootReducer>
