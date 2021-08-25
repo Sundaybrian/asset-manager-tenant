@@ -38,11 +38,11 @@
     "react/react-in-jsx-scope": "error",
     "react/prop-types": ["off"],
     // "sonarjs/cognitive-complexity": ["error", 5],
-    "max-lines-per-function": ["warn", 200],
+    "max-lines-per-function": ["warn", 230],
     "indent": ["warn", "tab"],
     "@typescript-eslint/no-explicit-any": ["off"],
     "@typescript-eslint/explicit-module-boundary-types": "off", // its working
-      "prettier/prettier": 0
+    "prettier/prettier": 0
   
   }
 }
