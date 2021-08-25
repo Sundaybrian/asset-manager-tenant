@@ -5,7 +5,8 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     // "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -22,7 +23,8 @@
 
   "plugins": [
     "react",
-    "prettier"
+    "prettier",
+    "react-hooks"
   ],
   "rules": {
     "react/jsx-no-bind": ["error", {
