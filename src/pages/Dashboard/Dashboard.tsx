@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Main from './Main';
 import AppBarAndDrawer from '../../components/Container/AppBar';
@@ -16,28 +15,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface IProps {
-  user: any;
   match: any;
-  auth: any;
-  logoutUser: () => void;
 }
 
-const Dashboard = (props) => {
+const Dashboard = ({match}) => {
   /* eslint-disable no-unused-vars */
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const {
-    match: { path },
-  } = props;
+    path,
+  } = match;
 
   const user = useSelector((state: RootState) => state.auth.user);
   const authenticated = useSelector((state: RootState) => state.auth.authenticated);
 
-  if (!authenticated) {
-    dispatch(logoutUser());
-    return false;
-  }
+  // if (!authenticated) {
+  //   dispatch(logoutUser());
+  //   return false;
+  // }
 
   return (
     <div className={classes.root}>
