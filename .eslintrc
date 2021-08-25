@@ -1,7 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "plugin:sonarjs/recommended",
+    // "plugin:sonarjs/recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     // "prettier/@typescript-eslint",
@@ -21,7 +21,8 @@
   },
 
   "plugins": [
-    "react"
+    "react",
+    "prettier"
   ],
   "rules": {
     "react/jsx-no-bind": ["error", {
@@ -38,6 +39,8 @@
     "max-lines-per-function": ["warn", 200],
     "indent": ["warn", "tab"],
     "@typescript-eslint/no-explicit-any": ["off"],
-    "@typescript-eslint/explicit-module-boundary-types": "off" // its working
+    "@typescript-eslint/explicit-module-boundary-types": "off", // its working
+      "prettier/prettier": 0
+  
   }
 }
