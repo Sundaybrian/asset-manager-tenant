@@ -116,11 +116,9 @@ const Register:React.FC<IProps> = (props) => {
     const loading= useSelector((state:RootState) => state.ui.loading)
     const authenticated= useSelector((state:RootState) => state.auth.authenticated)
 
-
     const [values, setValues] = React.useState({
         showPassword: false,
     });
-
 
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
@@ -129,8 +127,6 @@ const Register:React.FC<IProps> = (props) => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-
-    
 
     const { file, setFile, imageUrl, setImageUrl, imageChangeHandler } =
         useImageHandler({ accept: false });
