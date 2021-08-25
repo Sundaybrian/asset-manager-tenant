@@ -54,19 +54,26 @@ export const loginUser = (userData: IUserDto, history:any) => (dispatch) => {
         });
    */
 };
-export const registerUser = (userData) => (dispatch) => {
+export const registerUser = (userData:Partial<IUser>,history, actions) => (dispatch) => {
+  
+  actions.resetForm();
+  dispatch({
+    type: SET_SUCCESS,
+    payload: `welcome back John`,
+  });
+  history.push('/login');
+};
+
+
+export const registerCompany = (companyData, history,) => dispatch =>{
   console.log('');
+  
 };
 
 // update user details
 export const updateUserProfile = () => {
   console.log('');
 };
-
-export const registerCompany = (companyData, history) => {
-  console.log('');
-};
-
 // utils
 const setUserData = (user) => ({
   type: SET_USER,
