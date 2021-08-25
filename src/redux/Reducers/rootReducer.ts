@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
   firebase: firebaseReducer,
 });
 
+export default rootReducer;
 
-export default rootReducer
-
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
