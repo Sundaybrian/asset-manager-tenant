@@ -5,7 +5,7 @@ const useImageHandler = () => {
     const [imageUrl, setImageUrl] = React.useState(null); //once we have an image, we will duplicate it here
     const types = ["image/png", "image/jpeg", "image/jpg"];
     const imageChangeHandler = (e) => {
-        let selected = e.target.files[0];
+        const selected = e.target.files[0];
         if (selected && types.includes(selected.type)) {
             setFile(selected);
             console.log(selected);
