@@ -23,7 +23,7 @@ export class Main extends React.Component<Props> {
   }
 
   goHome = () => {
-    this.props.history.push(`${this.props.matchPath}/${this.props.routes[1].path}`);
+    this.props.history.push(`${this.props.matchPath}/${this.props.routes[0].path}`);
   };
 
   componentDidMount() {
