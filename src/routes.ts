@@ -1,11 +1,12 @@
 import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
 
 export const defaultRoutes = [
-  // {
-  //     path: "/register",
-  //     exact: true,
-  //     component: RegisterPage
-  // },
+  {
+      path: "/register",
+      exact: true,
+      component: Register
+  },
   // {
   //     path: "/forgot-password",
   //     exact: true,
