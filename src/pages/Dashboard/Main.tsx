@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import Content from '../../components/Container/Content';
-import store from '../../redux/store';
+import { dispatchStore } from '../../redux/store';
 import { logoutUser } from '../../redux/Actions/authActions';
 
 /* eslint-disable no-useless-constructor */
@@ -39,19 +39,19 @@ export class Main extends React.Component<Props> {
           render={(props) => {
             // not authenticated,we kick user out
             if (!authenticated) {
-              store.dispatch(logoutUser());
+              dispatchStore(logoutUser());
               return;
             }
 
-            const goToPage = this.props.routes.find((p) => {
+            const GOTOPAGE = this.props.routes.find((p) => {
               return p.text === props.match.params.id;
             });
 
             return (
-              <goToPage.component
+              <GOTOPAGE.component
                 routes={
                   // sending routes thru, will be useful for containers
-                  goToPage.routes !== null ? goToPage.routes : []
+                  GOTOPAGE.routes !== null ? GOTOPAGE.routes : []
                 }
                 {...props}
               />
