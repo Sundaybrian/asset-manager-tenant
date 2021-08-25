@@ -18,16 +18,19 @@
     "@types/react-dom": "^17.0.9",
     "axios": "^0.21.1",
     "date-fns": "^2.23.0",
+    "firebase": "^8.9.1",
     "formik": "^2.2.9",
     "formik-material-ui": "^3.0.1",
     "formik-material-ui-pickers": "^0.0.12",
     "jwt-decode": "^3.1.2",
+    "moment": "^2.29.1",
     "notistack": "^1.0.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-loaders": "^3.0.1",
     "react-redux": "^7.2.4",
     "react-redux-firebase": "^3.10.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
@@ -38,11 +41,20 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "BROWSER=none react-scripts start",
+    "start:develop": "BROWSER=none REACT_APP_STAGE=develop react-scripts start --reset-cache --verbose",
+    "start:local": "BROWSER=none REACT_APP_STAGE=local react-scripts start",
+    "start:cluster": "BROWSER=none REACT_APP_STAGE=cluster react-scripts start",
+    "start:test": "BROWSER=none REACT_APP_STAGE=test react-scripts start",
+    "build": "REACT_APP_STAGE=develop react-scripts build",
+    "build:prod": "REACT_APP_STAGE=prod react-scripts build",
+    "build:cluster": "REACT_APP_STAGE=cluster react-scripts build",
+    "build:test": "REACT_APP_STAGE=test react-scripts build",
     "eject": "react-scripts eject",
-    "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix --no-error-on-unmatched-pattern"
+    "lint": "eslint src/**/*.js src/**/*.tsx src/**/*.ts",
+    "lint2": "eslint '*/**/*.{ts,tsx}' --quiet --fix --no-error-on-unmatched-pattern",
+    "format": "prettier --write \"src/**/*.+(js|jsx|ts|tsx|json|css|md)\"",
+    "lint:warn": "eslint --ext .ts --ext .tsx ."
   },
   "eslintConfig": {
     "extends": [
@@ -57,7 +69,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "yarn lint"
+      "yarn lint",
+      "npm run format"
     ]
   },
   "browserslist": {
@@ -91,6 +104,8 @@
     "@types/styled-components": "^5.1.11",
     "@types/yup": "^0.29.13",
     "env-cmd": "^10.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.1",
     "prettier": "^2.3.2"
