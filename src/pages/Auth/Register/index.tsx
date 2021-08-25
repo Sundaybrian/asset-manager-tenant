@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-
 import * as Yup from "yup";
 
 import { Formik, Form, Field } from "formik";
@@ -19,6 +17,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import {Theme } from '@material-ui/core/styles';
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -31,11 +30,11 @@ import useImageHandler from "../../../hooks/useImageHandler";
 import ProgressBar from "../../../components/Base/ProgressBarImages";
 
 // redux
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../../redux/Actions/authActions";
 import { RootState } from "../../../redux/Reducers/rootReducer";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
     root: {
         height: "100vh",
         "& .MuiTextField-root": {
@@ -104,8 +103,19 @@ const validationSchemaTenant = Yup.object({
     ),
 });
 
-const Register = (props) => {
+
+ interface IProps {
+     history: any;
+    
+}
+
+const Register:React.FC<IProps> = (props) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    const loading= useSelector((state:RootState) => state.ui.loading)
+    const authenticated= useSelector((state:RootState) => state.auth.authenticated)
+
 
     const [values, setValues] = React.useState({
         showPassword: false,
@@ -120,11 +130,7 @@ const Register = (props) => {
         event.preventDefault();
     };
 
-    const {
-        ui: { loading },
-        registerUser,
-        auth: { authenticated },
-    } = props;
+    
 
     const { file, setFile, imageUrl, setImageUrl, imageChangeHandler } =
         useImageHandler({ accept: false });
@@ -150,8 +156,7 @@ const Register = (props) => {
                     : imageUrl,
         };
 
-        registerUser(user, props.history);
-        actions.resetForm();
+        dispatch(registerUser(user, props.history, actions));
         setImageUrl(null);
     };
 
@@ -181,7 +186,7 @@ const Register = (props) => {
                             </Avatar>
                         )}
                         <Typography component="h1" variant="h5">
-                            Create Company Account
+                            Create Tenant Account
                         </Typography>
 
                         <Formik
@@ -341,14 +346,14 @@ const Register = (props) => {
                             </Form>
                         </Formik>
 
-                        <Grid container mt={5}>
+                        <Grid container>
                             <Grid item xs>
-                                <Link to="/forgot-password" variant="body2">
+                                <Link to="/forgot-password">
                                     Forgot password?
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link to="/login" variant="body2">
+                                <Link to="/login">
                                     {"Already have an account? Log in"}
                                 </Link>
                             </Grid>
@@ -363,19 +368,6 @@ const Register = (props) => {
     );
 };
 
-Register.propTypes = {
-    registerUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    ui: PropTypes.object.isRequired,
-};
 
-const mapStateToProps = (state: RootState) => ({
-    auth: state.auth,
-    ui: state.ui,
-});
 
-const mapActionsToProps = {
-    registerUser,
-};
-
-export default connect(mapStateToProps, mapActionsToProps)(Register);
+export default Register;
