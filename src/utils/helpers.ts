@@ -1,4 +1,4 @@
-import defaultRoutes from "../routes";
+import defaultRoutes from '../routes';
 
 /* eslint-disable eqeqeq*/
 // export interface CompanyResponse{
@@ -16,10 +16,10 @@ import defaultRoutes from "../routes";
 // }
 
 export default function getDashboardRoutes(role) {
-    // TODO make sure not other user type accesses this
-    if (role === "merchant") {
-        return defaultRoutes;
-    } else {
-        return [];
-    }
+  // TODO make sure not other user type accesses this
+  if (role === 'merchant') {
+    return defaultRoutes;
+  } else {
+    return [];
+  }
 }
